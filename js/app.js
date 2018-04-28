@@ -39,6 +39,13 @@ function shuffle(array) {
 }
 
 
+// function to display the card's symbol if clicked
+function display(card) {
+  card.classList.toggle('open');
+  card.classList.toggle('show');
+}
+
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
