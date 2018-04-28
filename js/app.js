@@ -45,6 +45,11 @@ function display(card) {
   card.classList.toggle('show');
 }
 
+// set up event listener for a clck on card
+document.querySelector('.deck').addEventListener('click', function(event) {
+  const target = event.target;
+  display(target);
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
