@@ -45,10 +45,24 @@ function display(card) {
   card.classList.toggle('show');
 }
 
+// create a list of open cards
+let openCards = [];
+
+// function to mark card as opened and check if there is already one opened card and compare them if there is
+function markOpen(card) {
+  if (openCards.indexOf(card) >= 0) {
+    console.log('yes')
+  } else {
+    openCards.push(card);
+  };
+}
+
 // set up event listener for a clck on card
 document.querySelector('.deck').addEventListener('click', function(event) {
   const target = event.target;
-  display(target);
+  display(target); //show symbol
+  const symbol = target.querySelector('.fa').className;
+  markOpen(symbol); //check if this symbol is already opened
 });
 
 /*
