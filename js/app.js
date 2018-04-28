@@ -12,6 +12,15 @@ const allCards = cards.concat(cards);
   *   - loop through each card and create its HTML
   *   - add each card's HTML to the page
   */
+const cardsMixed = shuffle(allCards);
+const fragmentCards = document.createDocumentFragment();
+cardsMixed.forEach(function(card) {
+  const cardNext = document.createElement('li');
+  cardNext.className = "card";
+  cardNext.innerHTML = `<i class="fa ${card}"></i>`;
+  fragmentCards.appendChild(cardNext);
+});
+document.querySelector('.deck').appendChild(fragmentCards);
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
