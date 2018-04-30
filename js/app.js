@@ -75,12 +75,14 @@ function lock(card1, card2) {
 // set up event listener for a clck on card
 document.querySelector('.deck').addEventListener('click', function(event) {
   const target = event.target;
-  display(target); //show symbol
-  const symbol = target.querySelector('.fa');
-  openCards.push(symbol);
-  count++;
-  console.log(count);
-  markOpen(); //check if this symbol is already opened
+  if (! target.classList.contains('match')) {
+    display(target); //show symbol
+    const symbol = target.querySelector('.fa');
+    openCards.push(symbol);
+    count++;
+    console.log(count);
+    markOpen(); //check if this symbol is already opened
+  }
 });
 
 /*
