@@ -62,7 +62,7 @@ function markOpen() {
 //lock cards if matched
     if (first.value == second.value) {
       console.log('matched');
-      lock(openCards[openCards.length - 2], openCards[openCards.length - 1]);
+      lock(firstCard, secondCard);
     } else {
 //hide cards if not matched
       setTimeout(function() {
