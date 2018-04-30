@@ -61,7 +61,8 @@ function markOpen(card) {
 document.querySelector('.deck').addEventListener('click', function(event) {
   const target = event.target;
   display(target); //show symbol
-  const symbol = target.querySelector('.fa').className;
+  const symbol = target.querySelector('.fa');
+  openCards.push(symbol);
   markOpen(symbol); //check if this symbol is already opened
 });
 
