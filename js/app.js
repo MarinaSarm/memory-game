@@ -39,32 +39,40 @@ function shuffle(array) {
 }
 
 
-// function to display the card's symbol if clicked
+// function to display the card's symbol if clicked or hide if not matched
 function display(card) {
   card.classList.toggle('open');
   card.classList.toggle('show');
 }
 
-// create a list of open cards
+// create a list of open cards and counter
 let openCards = [];
 let openSymbols = [];
 let count = 0;
 
-// function to mark card as opened and check if there is already one opened card and compare them if there is
+// function to mark card as opened and check if there is already one opened card
+//compare them if there is
 function markOpen() {
   if (count > 1) {
     console.log(openSymbols);
     let first = openSymbols[openSymbols.length - 2].classList;
     let second = openSymbols[openSymbols.length - 1].classList;
+//lock cards if matched
     if (first.value == second.value) {
       console.log('matched');
       lock(openCards[openCards.length - 2], openCards[openCards.length - 1]);
     } else {
-      openCards.pop();
-      openCards.pop();
-      openSymbols.pop();
-      openSymbols.pop();
+//hide cards if not matched
+      setTimeout(function() {
+        display(openCards[openCards.length - 2]);
+        display(openCards[openCards.length - 1]);
+        openCards.pop();
+        openCards.pop();
+        openSymbols.pop();
+        openSymbols.pop();
+      }, 1000);
     };
+//reset counter
     count = 0;
   }
 }
@@ -85,7 +93,7 @@ document.querySelector('.deck').addEventListener('click', function(event) {
     openSymbols.push(symbol);
     count++;
     console.log(count);
-    markOpen(); //check if this symbol is already opened
+    markOpen(); //match or hide cards
   }
 });
 
