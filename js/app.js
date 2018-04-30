@@ -74,6 +74,8 @@ function markOpen() {
     };
 //reset counter
     count = 0;
+//count steps
+    counter();
   }
 }
 
@@ -94,6 +96,7 @@ function addToList(card, symbol, add = true) {
   }
 }
 
+//function to execute in event listener
 function eventDo(target) {
   if (! target.classList.contains('match')) {
     display(target); //show symbol
@@ -118,6 +121,12 @@ document.querySelector('.deck').addEventListener('click', function(event) {
   };
 });
 
+//steps counter
+let stepCounter = 0;
+function counter() {
+  stepCounter++;
+  console.log(stepCounter);
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
