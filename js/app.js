@@ -47,14 +47,22 @@ function display(card) {
 
 // create a list of open cards
 let openCards = [];
+let count = 0;
 
 // function to mark card as opened and check if there is already one opened card and compare them if there is
 function markOpen(card) {
-  if (openCards.indexOf(card) >= 0) {
-    console.log('yes')
-  } else {
-    openCards.push(card);
-  };
+  if (count == 2) {
+    let first = openCards[openCards.length - 2].classList;
+    let second = openCards[openCards.length - 1].classList;
+    if (first.value == second.value) {
+      console.log(openCards);
+    } else {
+      openCards.pop(openCards.lenght - 2);
+      openCards.pop(openCards.lenght - 1);
+      console.log('not')
+    };
+    count = 0;
+  }
 }
 
 // set up event listener for a clck on card
@@ -63,6 +71,8 @@ document.querySelector('.deck').addEventListener('click', function(event) {
   display(target); //show symbol
   const symbol = target.querySelector('.fa');
   openCards.push(symbol);
+  count++;
+  console.log(count);
   markOpen(symbol); //check if this symbol is already opened
 });
 
