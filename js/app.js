@@ -47,20 +47,23 @@ function display(card) {
 
 // create a list of open cards
 let openCards = [];
+let openSymbols = [];
 let count = 0;
 
 // function to mark card as opened and check if there is already one opened card and compare them if there is
 function markOpen() {
   if (count > 1) {
-    console.log(openCards);
-    let first = openCards[openCards.length - 2].classList;
-    let second = openCards[openCards.length - 1].classList;
+    console.log(openSymbols);
+    let first = openSymbols[openSymbols.length - 2].classList;
+    let second = openSymbols[openSymbols.length - 1].classList;
     if (first.value == second.value) {
       console.log('matched');
       lock(openCards[openCards.length - 2], openCards[openCards.length - 1]);
     } else {
       openCards.pop();
       openCards.pop();
+      openSymbols.pop();
+      openSymbols.pop();
     };
     count = 0;
   }
@@ -75,10 +78,11 @@ function lock(card1, card2) {
 // set up event listener for a clck on card
 document.querySelector('.deck').addEventListener('click', function(event) {
   const target = event.target;
+  openCards.push(target);
   if (! target.classList.contains('match')) {
     display(target); //show symbol
     const symbol = target.querySelector('.fa');
-    openCards.push(symbol);
+    openSymbols.push(symbol);
     count++;
     console.log(count);
     markOpen(); //check if this symbol is already opened
