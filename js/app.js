@@ -94,9 +94,7 @@ function addToList(card, symbol, add = true) {
   }
 }
 
-// set up event listener for a clck on card
-document.querySelector('.deck').addEventListener('click', function(event) {
-  const target = event.target;
+function eventDo(target) {
   if (! target.classList.contains('match')) {
     display(target); //show symbol
     const symbol = target.querySelector('.fa');
@@ -105,6 +103,19 @@ document.querySelector('.deck').addEventListener('click', function(event) {
     console.log(count);
     markOpen(); //match or hide cards
   }
+}
+
+// set up event listener for a clck on card
+document.querySelector('.deck').addEventListener('click', function(event) {
+  event.stopPropagation();
+  if (event.target.tagName === "LI") {
+    const target = event.target;
+    eventDo(target);
+  }
+  else if (event.target.tagName === "I") {
+    const target = event.target.parentNode;
+    eventDo(target);
+  };
 });
 
 /*
