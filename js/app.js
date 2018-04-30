@@ -52,6 +52,7 @@ let count = 0;
 
 // function to mark card as opened and check if there is already one opened card
 //compare them if there is
+let clickPause = false;
 function markOpen() {
   if (count > 1) {
     console.log(openSymbols);
@@ -65,11 +66,13 @@ function markOpen() {
       lock(firstCard, secondCard);
     } else {
 //hide cards if not matched
+      clickPause = true;
       setTimeout(function() {
         display(firstCard);
         display(secondCard);
         addToList(firstCard, openSymbols[openSymbols.length - 2], false);
         addToList(secondCard, openSymbols[openSymbols.length - 1], false);
+        clickPause = false;
       }, 1000);
     };
 //reset counter
@@ -115,14 +118,16 @@ function eventDo(target) {
 // set up event listener for a clck on card
 document.querySelector('.deck').addEventListener('click', function(event) {
   event.stopPropagation();
-  if (event.target.tagName === "LI") {
-    const target = event.target;
-    eventDo(target);
+  if (! clickPause) {
+    if (event.target.tagName === "LI") {
+      const target = event.target;
+      eventDo(target);
+    }
+    else if (event.target.tagName === "I") {
+      const target = event.target.parentNode;
+      eventDo(target);
+    };
   }
-  else if (event.target.tagName === "I") {
-    const target = event.target.parentNode;
-    eventDo(target);
-  };
 });
 
 //steps counter
