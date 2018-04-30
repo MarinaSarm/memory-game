@@ -55,14 +55,19 @@ function markOpen(card) {
     let first = openCards[openCards.length - 2].classList;
     let second = openCards[openCards.length - 1].classList;
     if (first.value == second.value) {
-      console.log(openCards);
+      lock(openCards[openCards.length - 2], openCards[openCards.length - 1]);
     } else {
       openCards.pop(openCards.lenght - 2);
       openCards.pop(openCards.lenght - 1);
-      console.log('not')
     };
     count = 0;
   }
+}
+
+//function to lock cards in open position
+function lock(card1, card2) {
+  card1.classList.add('match');
+  card2.classList.add('match');
 }
 
 // set up event listener for a clck on card
