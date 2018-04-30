@@ -76,6 +76,9 @@ function markOpen() {
     count = 0;
 //count steps
     counter();
+    if (openCards.length === 16) {
+      finals();
+    }
   }
 }
 
@@ -125,6 +128,11 @@ document.querySelector('.deck').addEventListener('click', function(event) {
 let stepCounter = 0;
 function counter() {
   stepCounter++;
+  console.log(stepCounter);
+}
+
+//final score display when all cards have matched
+function finals() {
   console.log(stepCounter);
 }
 /*
