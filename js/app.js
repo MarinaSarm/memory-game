@@ -76,6 +76,7 @@ function markOpen() {
     count = 0;
 //count steps
     counter();
+    rating();
     if (openCards.length === 16) {
       finals();
     }
@@ -134,6 +135,24 @@ function counter() {
 //final score display when all cards have matched
 function finals() {
   console.log(stepCounter);
+}
+
+//rating your skills
+function rating() {
+  switch (true) {
+    case (stepCounter <= 16):
+      stars = 3;
+      break;
+    case (stepCounter <= 24):
+      stars = 2;
+      break;
+    case (stepCounter <= 32):
+      stars = 1;
+      break;
+    default:
+      stars = 0;
+  }
+  console.log('stars ' + stars);
 }
 /*
  * set up the event listener for a card. If a card is clicked:
