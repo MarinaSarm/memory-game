@@ -57,6 +57,8 @@ function markOpen() {
     console.log(openSymbols);
     let first = openSymbols[openSymbols.length - 2].classList;
     let second = openSymbols[openSymbols.length - 1].classList;
+    let firstCard = openCards[openCards.length - 2];
+    let secondCard = openCards[openCards.length - 1];
 //lock cards if matched
     if (first.value == second.value) {
       console.log('matched');
@@ -64,12 +66,10 @@ function markOpen() {
     } else {
 //hide cards if not matched
       setTimeout(function() {
-        display(openCards[openCards.length - 2]);
-        display(openCards[openCards.length - 1]);
-        openCards.pop();
-        openCards.pop();
-        openSymbols.pop();
-        openSymbols.pop();
+        display(firstCard);
+        display(secondCard);
+        addToList(firstCard, openSymbols[openSymbols.length - 2], false);
+        addToList(secondCard, openSymbols[openSymbols.length - 1], false);
       }, 1000);
     };
 //reset counter
@@ -83,14 +83,24 @@ function lock(card1, card2) {
   card2.classList.add('match');
 }
 
+//function to add cards to the list of open cards
+function addToList(card, symbol, add = true) {
+  if (add) {
+    openCards.push(card);
+    openSymbols.push(symbol);
+  } else {
+    openCards.pop();
+    openSymbols.pop();
+  }
+}
+
 // set up event listener for a clck on card
 document.querySelector('.deck').addEventListener('click', function(event) {
   const target = event.target;
-  openCards.push(target);
   if (! target.classList.contains('match')) {
     display(target); //show symbol
     const symbol = target.querySelector('.fa');
-    openSymbols.push(symbol);
+    addToList(target, symbol);
     count++;
     console.log(count);
     markOpen(); //match or hide cards
