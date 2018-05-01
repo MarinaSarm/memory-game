@@ -12,16 +12,17 @@ const allCards = cards.concat(cards);
   *   - loop through each card and create its HTML
   *   - add each card's HTML to the page
   */
-const cardsMixed = shuffle(allCards);
-const fragmentCards = document.createDocumentFragment();
-cardsMixed.forEach(function(card) {
-  const cardNext = document.createElement('li');
-  cardNext.className = "card";
-  cardNext.innerHTML = `<i class="fa ${card}"></i>`;
-  fragmentCards.appendChild(cardNext);
-});
-document.querySelector('.deck').appendChild(fragmentCards);
-
+function throwCards() {
+  const cardsMixed = shuffle(allCards);
+  const fragmentCards = document.createDocumentFragment();
+  cardsMixed.forEach(function(card) {
+    const cardNext = document.createElement('li');
+    cardNext.className = "card";
+    cardNext.innerHTML = `<i class="fa ${card}"></i>`;
+    fragmentCards.appendChild(cardNext);
+  });
+  document.querySelector('.deck').appendChild(fragmentCards);
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -115,6 +116,9 @@ function eventDo(target) {
   }
 }
 
+//throw cards
+throwCards()
+
 // set up event listener for a clck on card
 document.querySelector('.deck').addEventListener('click', function(event) {
   event.stopPropagation();
@@ -164,6 +168,14 @@ function rating() {
   document.querySelector('.rating').classList.toggle('display');
 }
 
+//restart Game
+document.querySelector('.restart').addEventListener('click', function(event) {
+  event.preventDefault();
+  document.querySelector('.deck').innerHTML = '';
+  count = 0;
+  stepCounter = 0;
+  throwCards();
+});
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
