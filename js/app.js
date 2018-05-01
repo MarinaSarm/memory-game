@@ -79,9 +79,9 @@ function markOpen() {
     count = 0;
 //count steps
     counter();
-    rating();
     if (openCards.length === 16) {
       finals();
+      rating();
     }
   }
 }
@@ -159,6 +159,7 @@ function rating() {
   }
   document.querySelector('.rating').innerText = `Congratulations! Your rating is ${stars} stars. You win with ${stepCounter} moves!`;
   document.querySelector('.rating').classList.toggle('display');
+  document.querySelector('.deck').classList.toggle('hide');
 }
 
 /*

@@ -81,6 +81,10 @@ h1 {
     font-size: 33px;
 }
 
+.deck.hide {
+  display: none;
+}
+
 /*
  * Styles for the Score Panel
  */
@@ -109,6 +113,16 @@ h1 {
 }
 
 /* display rating */
+.rating {
+  display: none;
+  min-width: 100%;
+  min-height: 50%;
+  background-color: #af28ba;
+  margin: auto;
+  border: 1px solid #000;
+  text-align: center;
+}
+
 .rating.display {
   display: block;
 }
