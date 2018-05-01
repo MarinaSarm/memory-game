@@ -177,13 +177,13 @@ function restart() {
   openSymbols = [];
   throwCards();
 }
-//restart Game
+//restart Game during current game
 document.querySelector('.restart').addEventListener('click', function(event) {
   event.preventDefault();
   restart();
 });
 
-// //new game, play one more time
+//new game, play one more time
 document.querySelector('.new-game').addEventListener('click', function(event) {
   event.preventDefault();
   restart();

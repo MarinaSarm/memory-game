@@ -131,8 +131,14 @@ h1 {
 
 .rate {
   color: #af28ba;
-  margin: auto;
-  margin-top: 0;
+  margin: 10px auto;
   font-size: 20px;
   text-align: center;
+}
+
+.new-game {
+  margin: auto;
+  margin-top: 10px;
+  width: 150px;
+  font-size: 20px;
 }
