@@ -80,7 +80,7 @@ function markOpen() {
     count = 0;
 //count steps
     counter();
-    if (openCards.length === 16) {
+    if (openCards.length >= 16) {
       finals();
       rating();
     }
@@ -117,7 +117,7 @@ function eventDo(target) {
 }
 
 //throw cards
-throwCards()
+throwCards();
 
 // set up event listener for a clck on card
 document.querySelector('.deck').addEventListener('click', function(event) {
@@ -168,13 +168,27 @@ function rating() {
   document.querySelector('.rating').classList.toggle('display');
 }
 
-//restart Game
-document.querySelector('.restart').addEventListener('click', function(event) {
-  event.preventDefault();
+//function to restart Game
+function restart() {
   document.querySelector('.deck').innerHTML = '';
   count = 0;
   stepCounter = 0;
+  openCards = [];
+  openSymbols = [];
   throwCards();
+}
+//restart Game
+document.querySelector('.restart').addEventListener('click', function(event) {
+  event.preventDefault();
+  restart();
+});
+
+// //new game, play one more time
+document.querySelector('.new-game').addEventListener('click', function(event) {
+  event.preventDefault();
+  restart();
+  document.querySelector('.container').style.display = "flex";
+  document.querySelector('.rating').classList.toggle('display');
 });
 /*
  * set up the event listener for a card. If a card is clicked:
