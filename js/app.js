@@ -157,8 +157,10 @@ function rating() {
     default:
       stars = 0;
   }
-  console.log('stars ' + stars);
+  document.querySelector('.rating').innerText = `Congratulations! Your rating is ${stars} stars. You win with ${stepCounter} moves!`;
+  document.querySelector('.rating').classList.toggle('display');
 }
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)

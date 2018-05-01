@@ -107,3 +107,8 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/* display rating */
+.rating.display {
+  display: block;
+}
