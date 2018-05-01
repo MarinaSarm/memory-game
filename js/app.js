@@ -44,6 +44,7 @@ function shuffle(array) {
 function display(card) {
   card.classList.toggle('open');
   card.classList.toggle('show');
+  card.classList.toggle('current');
 }
 
 // create a list of open cards and counter
@@ -106,7 +107,7 @@ function addToList(card, symbol, add = true) {
 
 //function to execute in event listener
 function eventDo(target) {
-  if (! target.classList.contains('match')) {
+  if ((! target.classList.contains('match')) && (! target.classList.contains('current'))) {
     display(target); //show symbol
     const symbol = target.querySelector('.fa');
     addToList(target, symbol);
