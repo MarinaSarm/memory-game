@@ -128,7 +128,6 @@ document.querySelector('.deck').addEventListener('click', function(event) {
       eventDo(target);
     };
   }
-    rating();
 });
 
 //steps counter
@@ -158,7 +157,9 @@ function rating() {
     default:
       stars = 0;
   }
-  document.querySelector('.message').innerText = `Congratulations! Your rating is ${stars} stars. You win with ${stepCounter} moves!`;
+  document.querySelector('.message').innerText = `Congratulations!`;
+  document.querySelector('.rate').innerText = `You win with ${stepCounter} moves!
+  Your rating is ${stars} stars`;
   document.querySelector('.container').style.display = "none";
   document.querySelector('.rating').classList.toggle('display');
 }
