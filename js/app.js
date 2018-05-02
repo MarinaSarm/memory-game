@@ -81,6 +81,7 @@ function markOpen() {
     count = 0;
 //count steps
     counter();
+    colorStars('black');
     if (openCards.length >= 16) {
       finals();
       rating();
@@ -147,16 +148,17 @@ function finals() {
   console.log(stepCounter);
 }
 
+let stars = 3;
 //rating your skills
 function rating() {
   switch (true) {
-    case (stepCounter <= 16):
+    case (stepCounter <= 12):
       stars = 3;
       break;
-    case (stepCounter <= 24):
+    case (stepCounter <= 20):
       stars = 2;
       break;
-    case (stepCounter <= 32):
+    case (stepCounter <= 28):
       stars = 1;
       break;
     default:
@@ -191,6 +193,14 @@ document.querySelector('.new-game').addEventListener('click', function(event) {
   document.querySelector('.container').style.display = "flex";
   document.querySelector('.rating').classList.toggle('display');
 });
+
+//fill stars with color according to your rating
+colorStars('red');
+function colorStars(colorS) {
+  for (i = 3; i > stars; i--) {
+    document.querySelector(`.stars > li:nth-of-type(${i})`).style.color = colorS;
+  };
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
