@@ -82,7 +82,9 @@ function markOpen() {
 //count steps
     counter();
     colorStars('black');
+//finish game
     if (openCards.length >= 16) {
+      clearInterval(time);
       rating();
     }
   }
@@ -161,7 +163,8 @@ function rating() {
   starsCount();
   document.querySelector('.message').innerText = `Congratulations!`;
   document.querySelector('.rate').innerText = `You win with ${stepCounter} moves!
-  Your rating is ${stars} stars`;
+  Your rating is ${stars} stars.
+  Your time is ${seconds} seconds.`;
   document.querySelector('.container').style.display = "none";
   document.querySelector('.rating').classList.toggle('display');
 }
@@ -203,9 +206,9 @@ function colorStars(colorS) {
 seconds = 0;
 function timerCount() {
   seconds += 1;
-  document.querySelector('.timer').innerText = `${seconds}`;
+  document.querySelector('.second').innerText = `${seconds}`;
 }
-setInterval(timerCount, 1000);
+let time = setInterval(timerCount, 1000);
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
