@@ -198,6 +198,14 @@ function colorStars(colorS) {
     document.querySelector(`.stars > li:nth-of-type(${i})`).style.color = colorS;
   }
 }
+
+//timer
+seconds = 0;
+function timerCount() {
+  seconds += 1;
+  document.querySelector('.timer').innerText = `${seconds}`;
+}
+setInterval(timerCount, 1000);
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
