@@ -135,10 +135,11 @@ document.querySelector('.deck').addEventListener('click', function(event) {
   }
 });
 
-//steps counter
+//steps counter and display moves
 let stepCounter = 0;
 function counter() {
   stepCounter++;
+  document.querySelector('.moves').innerText = stepCounter;
 }
 
 let stars = 3;
