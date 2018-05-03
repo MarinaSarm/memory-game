@@ -152,11 +152,8 @@ switch (true) {
   case (stepCounter <= 20):
     stars = 2;
     break;
-  case (stepCounter <= 28):
-    stars = 1;
-    break;
   default:
-    stars = 0;
+    stars = 1;
 }
 }
 
