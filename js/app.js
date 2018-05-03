@@ -83,7 +83,6 @@ function markOpen() {
     counter();
     colorStars('black');
     if (openCards.length >= 16) {
-      finals();
       rating();
     }
   }
@@ -140,30 +139,28 @@ document.querySelector('.deck').addEventListener('click', function(event) {
 let stepCounter = 0;
 function counter() {
   stepCounter++;
-  console.log(stepCounter);
-}
-
-//final score display when all cards have matched
-function finals() {
-  console.log(stepCounter);
 }
 
 let stars = 3;
 //rating your skills
+function starsCount() {
+switch (true) {
+  case (stepCounter <= 12):
+    stars = 3;
+    break;
+  case (stepCounter <= 20):
+    stars = 2;
+    break;
+  case (stepCounter <= 28):
+    stars = 1;
+    break;
+  default:
+    stars = 0;
+}
+}
+
 function rating() {
-  switch (true) {
-    case (stepCounter <= 12):
-      stars = 3;
-      break;
-    case (stepCounter <= 20):
-      stars = 2;
-      break;
-    case (stepCounter <= 28):
-      stars = 1;
-      break;
-    default:
-      stars = 0;
-  }
+  starsCount();
   document.querySelector('.message').innerText = `Congratulations!`;
   document.querySelector('.rate').innerText = `You win with ${stepCounter} moves!
   Your rating is ${stars} stars`;
@@ -195,11 +192,13 @@ document.querySelector('.new-game').addEventListener('click', function(event) {
 });
 
 //fill stars with color according to your rating
-colorStars('red');
 function colorStars(colorS) {
-  for (i = 3; i > stars; i--) {
+  starsCount();
+  let i = stars;
+  while (i < 3) {
+    i += 1;
     document.querySelector(`.stars > li:nth-of-type(${i})`).style.color = colorS;
-  };
+  }
 }
 /*
  * set up the event listener for a card. If a card is clicked:
