@@ -64,7 +64,6 @@ function markOpen() {
     let secondCard = openCards[openCards.length - 1];
 //lock cards if matched
     if (first.value == second.value) {
-      console.log('matched');
       lock(firstCard, secondCard);
     } else {
 //hide cards if not matched
