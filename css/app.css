@@ -71,6 +71,8 @@ h1 {
     transform: scale(1.1);
     background: #02b3e4;
     cursor: default;
+    animation-name: opencard;
+    animation-duration: 0.2s;
 }
 
 .deck .card.show {
@@ -85,6 +87,7 @@ h1 {
     animation-duration: 2s;
     transform: scale(1);
 }
+
 @keyframes rotatecard {
     from {
       transform: rotate(0deg);
@@ -93,6 +96,17 @@ h1 {
       transform: rotate(-360deg);
     }
   }
+
+@keyframes opencard {
+  from {
+    background-color: inherit;
+    transform: scale(1);
+  }
+  to {
+    background-color: #02b3e4;
+    transform: scale(1.1);
+  }
+}
 
 /*
  * Styles for the Score Panel
