@@ -1,3 +1,12 @@
+/* color scheme */
+/*
+#ABF26D cards
+#92F23C
+#469400
+#67AB2B background
+#FF0000 stars
+*/
+
 html {
     box-sizing: border-box;
 }
@@ -17,7 +26,7 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: rgba(153, 255, 102, 0.3); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
 
@@ -40,10 +49,10 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(135deg, rgba(103, 230, 103, 0.3) 0%, rgba(96, 214, 167, 0.9) 80%);
     padding: 32px;
     border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 12px 15px 20px 0 rgba(70, 148, 0, 0.5);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -54,7 +63,7 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
+    background: #008500	;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -62,17 +71,17 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 5px 2px 20px 0 rgba(70, 148, 0, 0.8);
     transition: transform 0.2s;
 }
 
 
 .deck .card.open {
     transform: scale(1.1);
-    background: #02b3e4;
+    background: #00CC00;
     cursor: default;
     animation-name: opencard;
-    animation-duration: 0.2s;
+    animation-duration: 0.1s;
 }
 
 .deck .card.show {
@@ -81,7 +90,7 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: #39E639;
     font-size: 33px;
     animation-name: rotatecard;
     animation-duration: 2s;
@@ -103,7 +112,7 @@ h1 {
     transform: scale(1);
   }
   to {
-    background-color: #02b3e4;
+    background-color: #00CC00;
     transform: scale(1.1);
   }
 }
@@ -123,7 +132,7 @@ h1 {
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
-    color: yellow;
+    color: #FF3300;
 }
 
 .score-panel .stars li {
