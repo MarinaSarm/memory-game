@@ -35,11 +35,13 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-size: 18px;
 }
 
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+    font-size: 1.5em;
 }
 
 /*
@@ -123,7 +125,7 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    max-width: 450px;
     margin-bottom: 10px;
 }
 
@@ -143,6 +145,10 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.score-panel .timer {
+    text-align: center;
 }
 
 /*
@@ -168,13 +174,11 @@ h1 {
   margin: auto;
   margin-bottom: 0;
   font-size: 30px;
-  /* text-align: center; */
 }
 
 .rate {
   margin: 10px auto;
   font-size: 20px;
-  /* text-align: center; */
 }
 
 .new-game {
@@ -185,4 +189,26 @@ h1 {
   font-size: 20px;
   border-radius: 8px;
   box-shadow: 5px 2px 20px 0 rgba(70, 148, 0, 0.8);
+}
+
+@media screen and (max-width: 400px) {
+  .deck {
+    max-width: 100%;
+    min-height: 100px;
+    padding: 10px;
+  }
+  .deck .card {
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+  }
+  .deck .card.show {
+    font-size: 42px;
+  }
+  .deck .card.match {
+    font-size: 42px;
+  }
+  .score-panel {
+      width: 90%;
+  }
 }
