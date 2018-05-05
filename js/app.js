@@ -173,6 +173,10 @@ function restart() {
   document.querySelector('.moves').innerText = '0';
   count = 0;
   stepCounter = 0;
+  const starsList = document.querySelectorAll('.stars > li');
+  for (let starsEach of starsList) {
+    starsEach.style.color = "#FF3300";
+  }
   seconds = 0;
   openCards = [];
   openSymbols = [];
