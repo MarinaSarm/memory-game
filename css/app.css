@@ -158,21 +158,23 @@ h1 {
   display: flex;
   flex-flow: column;
   align-items: center;
+  background: rgba(103, 230, 103, 0.3);
+  line-height: 3em;
+  text-align: center;
+  text-shadow: 1px 0 1px #007143;
 }
 
 .message {
-  color: #af28ba;
   margin: auto;
   margin-bottom: 0;
   font-size: 30px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .rate {
-  color: #af28ba;
   margin: 10px auto;
   font-size: 20px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .new-game {
@@ -181,7 +183,3 @@ h1 {
   width: 150px;
   font-size: 20px;
 }
-
-/*
- * Animation
- */
