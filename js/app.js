@@ -192,6 +192,7 @@ document.querySelector('.restart').addEventListener('click', function(event) {
 document.querySelector('.new-game').addEventListener('click', function(event) {
   event.preventDefault();
   restart();
+  let time = setInterval(timerCount, 1000);
   document.querySelector('.container').style.display = "flex";
   document.querySelector('.rating').classList.toggle('display');
 });
