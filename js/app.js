@@ -113,7 +113,6 @@ function eventDo(target) {
     const symbol = target.querySelector('.fa');
     addToList(target, symbol);
     count++;
-    console.log(count);
     markOpen(); //match or hide cards
   }
 }
@@ -171,8 +170,10 @@ function rating() {
 //function to restart Game
 function restart() {
   document.querySelector('.deck').innerHTML = '';
+  document.querySelector('.moves').innerText = '0';
   count = 0;
   stepCounter = 0;
+  seconds = 0;
   openCards = [];
   openSymbols = [];
   throwCards();
