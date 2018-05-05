@@ -23,6 +23,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-size: 24px;
 }
 
 body {
@@ -35,7 +36,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-size: 18px;
 }
 
 h1 {
@@ -125,6 +125,7 @@ h1 {
 
 .score-panel {
     text-align: left;
+    width: 80%;
     max-width: 450px;
     margin-bottom: 10px;
 }
@@ -145,10 +146,18 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    margin-bottom: 16px;
+    margin-left: 16px;
 }
 
 .score-panel .timer {
     text-align: center;
+}
+
+.score-panel .timer .second {
+    color: #FF3300;
+    text-shadow: 1px 1px 1px;
+    font-size: 1.5em;
 }
 
 /*
@@ -192,6 +201,9 @@ h1 {
 }
 
 @media screen and (max-width: 400px) {
+  body {
+    font-size: 18px;
+  }
   .deck {
     max-width: 100%;
     min-height: 100px;
@@ -209,6 +221,6 @@ h1 {
     font-size: 42px;
   }
   .score-panel {
-      width: 90%;
+    width: 90%;
   }
 }
