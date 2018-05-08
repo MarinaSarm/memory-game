@@ -48,8 +48,8 @@ h1 {
  */
 
 .deck {
-    max-width: 100%;
-    min-height: 100px;
+    width: 95vmin;
+    height: 95vmin;
     background: linear-gradient(135deg, rgba(103, 230, 103, 0.3) 0%, rgba(96, 214, 167, 0.9) 80%);
     padding: 10px;
     border-radius: 10px;
@@ -62,8 +62,9 @@ h1 {
 }
 
 .deck .card {
-    height: 50px;
-    width: 50px;
+    display: flex;
+    width: 20%;
+    height: 20%;
     background: #008500	;
     font-size: 0;
     color: #ffffff;
@@ -74,7 +75,7 @@ h1 {
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(70, 148, 0, 0.8);
     transition: transform 0.2s;
-    margin: 10px;
+    margin: 2%;
 }
 
 
@@ -202,38 +203,17 @@ h1 {
 
 /* mobile responsiveness */
 
-@media screen and (min-width: 400px) {
-  .deck {
-    max-width: 90%;
-  }
-  .deck .card {
-    height: 70px;
-    width: 70px;
-  }
-}
-
 @media screen and (min-width: 550px) {
-  .deck {
-    max-width: 90%;
-    min-height: 100px;
-    padding: 10px;
-  }
   .deck .card {
-    height: 100px;
-    width: 100px;
+    height: 18%;
+    width: 18%;
   }
 }
 
 @media screen and (min-width: 650px) {
   .deck {
     max-width: 660px;
-    min-height: 680px;
-    padding: 32px;
-  }
-  .deck .card {
-    height: 125px;
-    width: 125px;
-    margin: auto;
+    max-height: 660px;
   }
   .deck .card.show {
     font-size: 33px;
