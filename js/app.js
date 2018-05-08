@@ -2,9 +2,28 @@ window.onload = function play() {
 /*
  * Create a list that holds all of your cards
  */
- // all cards repeated 2 times
 const cards = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
+
+ // all cards repeated 2 times
 const allCards = cards.concat(cards);
+
+// create a list of open cards and counter
+let openCards = [];
+let openSymbols = [];
+let count = 0;
+
+// to lock any clicks before hiding cards that haven't matched
+let clickPause = false;
+
+//for rating
+let stars;
+
+//steps counter and display moves
+let stepCounter = 0;
+function counter() {
+  stepCounter++;
+  document.querySelector('.moves').innerText = stepCounter;
+}
 
  /*
   * Display the cards on the page
@@ -14,10 +33,11 @@ const allCards = cards.concat(cards);
   */
 function throwCards() {
   const cardsMixed = shuffle(allCards);
+  //create document fragment to reduce reflow and repaint
   const fragmentCards = document.createDocumentFragment();
   cardsMixed.forEach(function(card) {
     const cardNext = document.createElement('li');
-    cardNext.className = "card";
+    cardNext.className = 'card';
     cardNext.innerHTML = `<i class="fa ${card}"></i>`;
     fragmentCards.appendChild(cardNext);
   });
@@ -26,19 +46,18 @@ function throwCards() {
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+  let currentIndex = array.length, temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  };
 
-    return array;
+  return array;
 }
-
 
 // function to display the card's symbol if clicked or hide if not matched
 function display(card) {
@@ -47,14 +66,8 @@ function display(card) {
   card.classList.toggle('current');
 }
 
-// create a list of open cards and counter
-let openCards = [];
-let openSymbols = [];
-let count = 0;
-
-// function to mark card as opened and check if there is already one opened card
+//function to mark card as opened and check if there is already one opened card
 //compare them if there is
-let clickPause = false;
 function markOpen() {
   if (count > 1) {
     console.log(openSymbols);
@@ -80,13 +93,14 @@ function markOpen() {
     count = 0;
 //count steps
     counter();
+//check the star rating
     colorStars('black');
 //finish game
     if (openCards.length >= 16) {
       clearInterval(time);
       rating();
-    }
-  }
+    };
+  };
 }
 
 //function to lock cards in open position
@@ -117,54 +131,38 @@ function eventDo(target) {
   }
 }
 
-//throw cards
-throwCards();
-
-// set up event listener for a clck on card
-document.querySelector('.deck').addEventListener('click', function(event) {
-  event.stopPropagation();
-  if (! clickPause) {
-    if (event.target.tagName === "LI") {
-      const target = event.target;
-      eventDo(target);
-    }
-    else if (event.target.tagName === "I") {
-      const target = event.target.parentNode;
-      eventDo(target);
-    };
-  }
-});
-
-//steps counter and display moves
-let stepCounter = 0;
-function counter() {
-  stepCounter++;
-  document.querySelector('.moves').innerText = stepCounter;
-}
-
-let stars = 3;
 //rating your skills
 function starsCount() {
-switch (true) {
-  case (stepCounter <= 12):
-    stars = 3;
-    break;
-  case (stepCounter <= 20):
-    stars = 2;
-    break;
-  default:
-    stars = 1;
-}
+  switch (true) {
+    case (stepCounter <= 12):
+      stars = 3;
+      break;
+    case (stepCounter <= 20):
+      stars = 2;
+      break;
+    default:
+      stars = 1;
+  };
 }
 
 function rating() {
   starsCount();
   document.querySelector('.message').innerText = `Congratulations!`;
   document.querySelector('.rate').innerText = `You win with ${stepCounter} moves!
-  Your rating is ${stars} stars.
-  Your time is ${seconds} seconds.`;
-  document.querySelector('.container').style.display = "none";
+    Your rating is ${stars} stars.
+    Your time is ${seconds} seconds.`;
+  document.querySelector('.container').style.display = 'none';
   document.querySelector('.rating').classList.toggle('display');
+}
+
+//fill stars with color according to your rating
+function colorStars(colorS) {
+  starsCount();
+  let i = stars;
+  while (i < 3) {
+    i += 1;
+    document.querySelector(`.stars > li:nth-of-type(${i})`).style.color = colorS;
+  };
 }
 
 //function to restart Game
@@ -175,13 +173,32 @@ function restart() {
   stepCounter = 0;
   const starsList = document.querySelectorAll('.stars > li');
   for (let starsEach of starsList) {
-    starsEach.style.color = "#FF3300";
-  }
+    starsEach.style.color = '#FF3300';
+  };
   seconds = 0;
   openCards = [];
   openSymbols = [];
   throwCards();
 }
+
+//throw cards
+throwCards();
+
+// set up event listener for a click on card
+document.querySelector('.deck').addEventListener('click', function(event) {
+  event.stopPropagation();
+  if (! clickPause) {
+    if (event.target.tagName === 'LI') {
+      const target = event.target;
+      eventDo(target);
+    }
+    else if (event.target.tagName === 'I') {
+      const target = event.target.parentNode;
+      eventDo(target);
+    };
+  };
+});
+
 //restart Game during current game
 document.querySelector('.restart').addEventListener('click', function(event) {
   event.preventDefault();
@@ -193,22 +210,12 @@ document.querySelector('.new-game').addEventListener('click', function(event) {
   event.preventDefault();
   restart();
   let time = setInterval(timerCount, 1000);
-  document.querySelector('.container').style.display = "flex";
+  document.querySelector('.container').style.display = 'flex';
   document.querySelector('.rating').classList.toggle('display');
 });
 
-//fill stars with color according to your rating
-function colorStars(colorS) {
-  starsCount();
-  let i = stars;
-  while (i < 3) {
-    i += 1;
-    document.querySelector(`.stars > li:nth-of-type(${i})`).style.color = colorS;
-  }
-}
-
 //timer
-seconds = 0;
+let seconds = 0;
 function timerCount() {
   seconds += 1;
   document.querySelector('.second').innerText = `${seconds}`;
