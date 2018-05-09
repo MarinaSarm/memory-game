@@ -25,6 +25,10 @@ function counter() {
   document.querySelector('.moves').innerText = stepCounter;
 }
 
+//for timer
+let time;
+let firstMove = false;
+
  /*
   * Display the cards on the page
   *   - shuffle the list of cards using the provided "shuffle" method below
@@ -178,6 +182,9 @@ function restart() {
   seconds = 0;
   openCards = [];
   openSymbols = [];
+  clearInterval(time);
+  firstMove = false;
+  document.querySelector('.second').innerText = '0';
   throwCards();
 }
 
@@ -187,6 +194,10 @@ throwCards();
 // set up event listener for a click on card
 document.querySelector('.deck').addEventListener('click', function(event) {
   event.stopPropagation();
+  if (! firstMove) {
+    time = setInterval(timerCount, 1000);
+    firstMove = true;
+  }
   if (! clickPause) {
     if (event.target.tagName === 'LI') {
       const target = event.target;
@@ -209,7 +220,6 @@ document.querySelector('.restart').addEventListener('click', function(event) {
 document.querySelector('.new-game').addEventListener('click', function(event) {
   event.preventDefault();
   restart();
-  let time = setInterval(timerCount, 1000);
   document.querySelector('.container').style.display = 'flex';
   document.querySelector('.rating').classList.toggle('display');
 });
@@ -220,7 +230,7 @@ function timerCount() {
   seconds += 1;
   document.querySelector('.second').innerText = `${seconds}`;
 }
-let time = setInterval(timerCount, 1000);
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
