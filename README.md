@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [Overview](#overview)
-* [Instructions for the game](#instructions for the game)
+* [Instructions for the game](#instructions)
 * [Contributing](#contributing)
 
 ## Overview
